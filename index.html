@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزرو لوازم جشن غدیر - کرایه چی دبستان</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div id="welcomeMessageContainer">
+        <h1 id="welcomeText">به کرایه چی دبستان خوش آمدید</h1>
+    </div>
+
+    <header id="appHeader" class="hidden"> <!-- هدر را ابتدا مخفی می‌کنیم -->
+        <button id="btnAllItems">همه اقلام</button>
+        <button id="btnReserve">رزرو برای جشن</button>
+        <button id="btnFinalizeLogin">ثبت نهایی/ورود</button>
+        <button id="btnChangeDate" class="hidden">تغییر تاریخ</button>
+    </header>
+
+    <main id="appMain" class="hidden"> <!-- محتوای اصلی را هم ابتدا مخفی می‌کنیم -->
+        <section id="allItemsView" class="view-section">
+            <h2>همه اقلام موجود</h2>
+            <div class="items-grid">
+                <!-- اقلام اینجا توسط جاوااسکریپت بارگذاری می‌شوند -->
+            </div>
+        </section>
+
+        <section id="reserveView" class="view-section hidden">
+            <h2>رزرو برای جشن</h2>
+            <div id="calendarContainer">
+                <h3>تاریخ برگزاری جشن خود را انتخاب کنید (۲۶ خرداد تا ۵ تیر):</h3>
+                <div class="calendar-grid">
+                    <!-- تقویم اینجا توسط جاوااسکریپت بارگذاری می‌شود -->
+                </div>
+            </div>
+            <div id="itemSelectionContainer" class="hidden">
+                <h3>اقلام قابل رزرو برای تاریخ <span id="selectedDateDisplay"></span>:</h3>
+                <div class="items-grid reservation-items-grid">
+                    <!-- اقلام برای رزرو اینجا توسط جاوااسکریپت بارگذاری می‌شوند -->
+                </div>
+                <p id="dailyLimitMessage" class="hidden error-message"></p>
+            </div>
+        </section>
+
+        <section id="finalizeFormView" class="view-section hidden">
+            <h2>ثبت نهایی اطلاعات</h2>
+            <div class="form-container">
+                <p>لطفاً اطلاعات خود را برای نهایی کردن رزرو وارد کنید:</p>
+                <p>تاریخ انتخاب شده برای جشن: <strong id="finalSelectedDate"></strong></p>
+                <h4>اقلام انتخاب شده:</h4>
+                <ul id="finalSelectedItemsList">
+                    <!-- لیست اقلام نهایی اینجا توسط جاوااسکریپت -->
+                </ul>
+                <input type="text" id="fullNameInput" placeholder="نام و نام خانوادگی" autocomplete="name">
+                <input type="tel" id="phoneInput" placeholder="شماره تلفن (مثال: 09123456789)" autocomplete="tel">
+                <button id="submitReservationBtn">ثبت و ارسال</button>
+                <p id="formMessage" class="message"></p>
+            </div>
+        </section>
+
+        <section id="adminView" class="view-section hidden">
+            <h2>پنل مدیریت</h2>
+            <button id="refreshAdminData">بارگذاری مجدد اطلاعات</button>
+            <div class="table-container">
+                <table id="adminReservationsTable">
+                    <thead>
+                        <tr>
+                            <th>نام و نام خانوادگی</th>
+                            <th>شماره تلفن</th>
+                            <th>تاریخ جشن (شمسی)</th>
+                            <th>اقلام رزرو شده</th>
+                            
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- اطلاعات رزروها اینجا توسط جاوااسکریپت بارگذاری می‌شود -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+</html>
