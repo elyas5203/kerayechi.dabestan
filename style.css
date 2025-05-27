@@ -1,4 +1,4 @@
-/* style.css - نسخه بازنویسی شده با ظاهر و فونت جدید و اصلاح گرید رزرو */
+/* style.css - نسخه با تک ستونه شدن رزرو در موبایل و استایل Modal - کامل */
 
 /* --- Import فونت وزیرمتن از گوگل فونت --- */
 @import url('https://fonts.googleapis.com/css2?family=Vazirmatn:wght@300;400;500;600;700&display=swap');
@@ -140,20 +140,24 @@ body {
 /* --- محتوای اصلی --- */
 #appMain {
     padding-top: calc(var(--header-height) + 25px);
-    padding-left: clamp(15px, 4vw, 30px);
-    padding-right: clamp(15px, 4vw, 30px);
+    padding-left: clamp(10px, 3vw, 20px); 
+    padding-right: clamp(10px, 3vw, 20px);
     padding-bottom: 40px;
+    max-width: 100%; 
+    overflow-x: hidden; 
 }
 
 .view-section {
     margin-bottom: 35px;
     border-radius: var(--border-radius-large);
-    padding: clamp(20px, 5vw, 35px);
+    padding: clamp(15px, 4vw, 25px); 
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     border: 1px solid var(--glass-border);
     box-shadow: var(--box-shadow-strong);
+    max-width: 100%;
+    overflow-x: hidden; 
 }
 .view-section h2, .view-section h3 {
     color: var(--color-text-headings);
@@ -167,46 +171,33 @@ body {
 }
 
 /* --- گرید اقلام --- */
-/* استایل مشترک برای همه گریدهای اقلام */
 .items-grid {
     display: grid;
-    /* به طور پیش‌فرض برای دسکتاپ و صفحات بزرگتر، اجازه می‌دهیم خودکار تنظیم شود */
     grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); 
-    gap: clamp(20px, 4vw, 30px);
+    gap: clamp(15px, 3vw, 20px);
 }
 
-/* *** تغییر کلیدی: اطمینان از دو ستونه بودن در موبایل برای همه گریدهای اقلام *** */
-@media (max-width: 768px) {
-    .items-grid { /* این استایل به هر دو .items-grid و .reservation-items-grid اعمال می‌شود اگر هر دو این کلاس را داشته باشند */
+@media (max-width: 768px) { /* تبلت و موبایل بزرگ */
+    .items-grid { 
         grid-template-columns: repeat(2, 1fr);
+        gap: 10px; 
+    }
+    /* تک ستونه کردن گرید رزرو در این سایز موبایل */
+    .items-grid.reservation-specific-grid {
+        grid-template-columns: 1fr; /* تک ستونه */
+        gap: 15px; /* فاصله بین کارت‌ها در حالت تک ستونه */
     }
 }
-/* برای موبایل‌های خیلی کوچک، تک ستونه */
-@media (max-width: 600px) { 
-    .items-grid {
+@media (max-width: 480px) { /* موبایل خیلی کوچک */
+    .items-grid { /* همه گریدها (از جمله گرید اصلی و گرید رزرو) تک ستونه می‌شوند */
         grid-template-columns: 1fr;
+        gap: 15px; 
     }
 }
-/* اگر reservation-items-grid کلاس جداگانه‌ای است و فقط آن باید دو ستونه شود: */
-/* .reservation-items-grid {
-    display: grid;
-    gap: clamp(20px, 4vw, 30px);
-}
-@media (min-width: 481px) { // از یک حدی بزرگتر دو ستونه باشد
-    .reservation-items-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-}
-@media (max-width: 480px) { // برای موبایل خیلی کوچک تک ستونه
-    .reservation-items-grid {
-        grid-template-columns: 1fr;
-    }
-} */
-
 
 .item-card {
     border-radius: var(--border-radius-medium);
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     display: flex;
     flex-direction: column;
@@ -217,91 +208,81 @@ body {
     -webkit-backdrop-filter: blur(calc(var(--glass-blur) - 2px)) saturate(calc(var(--glass-saturate) - 20%));
     border: 1px solid var(--glass-border);
     box-shadow: var(--box-shadow-soft);
+    overflow: hidden;
+    word-wrap: break-word;
 }
 .item-card:hover {
-    transform: translateY(-10px);
-    box-shadow: var(--box-shadow-strong);
+    transform: translateY(-5px);
+    box-shadow: var(--box-shadow-medium);
 }
 .item-card img, .item-card .color-swatch {
     width: 100%;
-    height: 160px;
+    max-width: 150px;
+    height: 130px;
     object-fit: contain;
-    margin-bottom: 20px;
+    margin: 0 auto 15px auto;
     border-radius: var(--border-radius-small);
     border: 1px solid rgba(255,255,255,0.05);
+    cursor: pointer; 
 }
 .item-card h4 {
-    margin: 0 0 10px 0;
-    font-size: 1.2rem;
+    margin: 0 0 8px 0;
+    font-size: 1.1rem;
     color: var(--color-text-headings);
     font-weight: 600;
 }
 .item-card p {
-    font-size: 0.9rem;
+    font-size: 0.85rem;
     color: var(--color-text-secondary);
     flex-grow: 1;
-    margin-bottom: 15px;
-    line-height: 1.6;
+    margin-bottom: 12px;
+    line-height: 1.5;
 }
 
 /* کنترل‌های تعداد */
 .quantity-controls {
-    display: flex; justify-content: center; align-items: center; margin-top: 15px;
+    display: flex; justify-content: center; align-items: center; margin-top: 10px;
 }
 .quantity-controls button {
     background-color: var(--color-primary);
     color: white; border: none;
-    width: 38px; height: 38px;
-    font-size: 1.6em; line-height: 1;
-    border-radius: 50%; cursor: pointer; margin: 0 12px;
-    transition: all 0.2s ease; box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    width: 34px; height: 34px;
+    font-size: 1.5em; line-height: 1;
+    border-radius: 50%; cursor: pointer; margin: 0 10px;
+    transition: all 0.2s ease; box-shadow: 0 1px 4px rgba(0,0,0,0.15);
     display: flex; align-items: center; justify-content: center;
 }
 .quantity-controls button.minus-btn { background-color: var(--color-danger); }
-.quantity-controls button:hover {
-    transform: scale(1.1);
-    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
-}
+.quantity-controls button:hover { transform: scale(1.05); box-shadow: 0 3px 8px rgba(0,0,0,0.2); }
 .quantity-controls button.plus-btn:hover { background-color: var(--color-primary-dark); }
 .quantity-controls button.minus-btn:hover { background-color: var(--color-danger-dark); }
 .quantity-controls button:disabled {
-    background-color: var(--color-disabled); opacity: 0.7;
+    background-color: var(--color-disabled); opacity: 0.6;
     cursor: not-allowed; transform: none; box-shadow: none;
 }
 .quantity-controls span {
-    font-size: 1.25rem; min-width: 35px; text-align: center;
+    font-size: 1.15rem; min-width: 30px; text-align: center;
     color: var(--color-text-primary); font-weight: 500;
 }
 
 /* --- تقویم --- */
 .calendar-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
-    gap: 15px; margin-top: 25px;
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px; margin-top: 20px;
 }
 .calendar-day {
-    background: rgba(255, 255, 255, 0.05);
-    border: 1px solid var(--glass-border);
-    color: var(--color-text-secondary);
-    padding: 20px 10px;
-    text-align: center;
-    border-radius: var(--border-radius-medium);
-    cursor: pointer;
-    transition: all 0.25s ease;
-    font-size: 0.9rem;
-    font-weight: 500;
+    background: rgba(255, 255, 255, 0.05); border: 1px solid var(--glass-border);
+    color: var(--color-text-secondary); padding: 15px 8px; text-align: center;
+    border-radius: var(--border-radius-medium); cursor: pointer; transition: all 0.25s ease;
+    font-size: 0.85rem; font-weight: 500;
 }
 .calendar-day:not(.disabled):hover {
-    background: var(--color-primary);
-    color: white;
-    transform: translateY(-5px) scale(1.05);
-    box-shadow: var(--box-shadow-medium);
+    background: var(--color-primary); color: white;
+    transform: translateY(-3px) scale(1.03); box-shadow: var(--box-shadow-soft);
 }
 .calendar-day.disabled {
-    background-color: rgba(120, 120, 120, 0.2);
-    color: #777;
-    cursor: not-allowed; opacity: 0.6;
-    text-decoration: line-through;
+    background-color: rgba(120, 120, 120, 0.2); color: #777;
+    cursor: not-allowed; opacity: 0.6; text-decoration: line-through;
 }
 .calendar-day.disabled:hover { transform: none; box-shadow: none; background-color: rgba(120, 120, 120, 0.2); }
 
@@ -310,98 +291,64 @@ body {
 .form-container p, .form-container h4 { color: var(--color-text-primary); margin-bottom: 15px; }
 .form-container p strong { color: var(--color-text-headings); font-weight: 600; }
 .form-container h4 {
-    margin-top: 30px;
-    border-bottom: 1px solid rgba(255,255,255,0.15);
-    padding-bottom: 12px; font-size: 1.3rem;
-    color: var(--color-text-headings);
+    margin-top: 30px; border-bottom: 1px solid rgba(255,255,255,0.15);
+    padding-bottom: 12px; font-size: 1.3rem; color: var(--color-text-headings);
 }
-.form-container input[type="text"],
-.form-container input[type="tel"] {
-    width: 100%; padding: 15px 20px;
-    margin-bottom: 25px;
-    border: 1px solid var(--glass-border);
-    border-radius: var(--border-radius-medium);
-    font-size: 1rem;
-    background-color: rgba(255, 255, 255, 0.03);
-    color: var(--color-text-primary);
-    transition: all 0.3s ease;
-    font-family: var(--font-primary);
+.form-container input[type="text"], .form-container input[type="tel"] {
+    width: 100%; padding: 15px 20px; margin-bottom: 25px;
+    border: 1px solid var(--glass-border); border-radius: var(--border-radius-medium);
+    font-size: 1rem; background-color: rgba(255, 255, 255, 0.03);
+    color: var(--color-text-primary); transition: all 0.3s ease; font-family: var(--font-primary);
 }
-.form-container input[type="text"]::placeholder,
-.form-container input[type="tel"]::placeholder { color: #888; }
-.form-container input[type="text"]:focus,
-.form-container input[type="tel"]:focus {
-    outline: none;
-    border-color: var(--color-primary);
-    background-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
+.form-container input[type="text"]::placeholder, .form-container input[type="tel"]::placeholder { color: #888; }
+.form-container input[type="text"]:focus, .form-container input[type="tel"]:focus {
+    outline: none; border-color: var(--color-primary);
+    background-color: rgba(255, 255, 255, 0.06); box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
 }
 .form-container button#submitReservationBtn {
     background: linear-gradient(145deg, var(--color-secondary), var(--color-secondary-dark));
-    color: white; padding: 16px 25px;
-    border: none; border-radius: var(--border-radius-medium);
-    cursor: pointer; font-size: 1.15rem; font-weight: 600;
-    width: 100%; transition: all 0.3s ease;
-    text-transform: uppercase; letter-spacing: 1.5px;
-    box-shadow: var(--box-shadow-medium);
-    font-family: var(--font-primary);
+    color: white; padding: 16px 25px; border: none; border-radius: var(--border-radius-medium);
+    cursor: pointer; font-size: 1.15rem; font-weight: 600; width: 100%;
+    transition: all 0.3s ease; text-transform: uppercase; letter-spacing: 1.5px;
+    box-shadow: var(--box-shadow-medium); font-family: var(--font-primary);
 }
-.form-container button#submitReservationBtn:hover,
-.form-container button#submitReservationBtn:focus {
+.form-container button#submitReservationBtn:hover, .form-container button#submitReservationBtn:focus {
     background: linear-gradient(145deg, var(--color-secondary-dark), var(--color-secondary));
-    transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3);
-    outline: none;
+    transform: translateY(-3px); box-shadow: 0 6px 20px rgba(46, 204, 113, 0.3); outline: none;
 }
 #finalSelectedItemsList { list-style-type: none; padding-right: 0; margin-bottom: 30px; }
 #finalSelectedItemsList li {
-    background-color: rgba(255, 255, 255, 0.03);
-    padding: 12px 18px; margin-bottom: 8px;
-    border-radius: var(--border-radius-small);
-    border: 1px solid rgba(255,255,255,0.08);
+    background-color: rgba(255, 255, 255, 0.03); padding: 12px 18px; margin-bottom: 8px;
+    border-radius: var(--border-radius-small); border: 1px solid rgba(255,255,255,0.08);
     color: var(--color-text-secondary); font-size: 1rem;
 }
 
 /* --- پنل ادمین --- */
 #adminView button#refreshAdminData {
-    background: var(--color-primary);
-    color: white; border: none;
-    padding: 12px 22px; border-radius: var(--border-radius-medium);
-    cursor: pointer; font-size: 1rem; font-weight: 500;
-    margin-bottom: 30px; transition: all 0.3s ease;
-    box-shadow: var(--box-shadow-soft);
-    font-family: var(--font-primary);
+    background: var(--color-primary); color: white; border: none;
+    padding: 12px 22px; border-radius: var(--border-radius-medium); cursor: pointer;
+    font-size: 1rem; font-weight: 500; margin-bottom: 30px; transition: all 0.3s ease;
+    box-shadow: var(--box-shadow-soft); font-family: var(--font-primary);
 }
-#adminView button#refreshAdminData:hover,
-#adminView button#refreshAdminData:focus {
-    background: var(--color-primary-dark);
-    transform: translateY(-2px);
-    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3);
-    outline: none;
+#adminView button#refreshAdminData:hover, #adminView button#refreshAdminData:focus {
+    background: var(--color-primary-dark); transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); outline: none;
 }
 .table-container {
-    overflow-x: auto;
-    background: var(--glass-bg-lighter);
-    padding: 20px;
-    border-radius: var(--border-radius-large);
-    border: 1px solid var(--glass-border);
+    overflow-x: auto; background: var(--glass-bg-lighter); padding: 20px;
+    border-radius: var(--border-radius-large); border: 1px solid var(--glass-border);
     box-shadow: var(--box-shadow-medium);
 }
 #adminReservationsTable {
-    width: 100%; border-collapse: separate;
-    border-spacing: 0 10px;
-    font-size: 0.95rem;
+    width: 100%; border-collapse: separate; border-spacing: 0 10px; font-size: 0.95rem;
 }
 #adminReservationsTable th, #adminReservationsTable td {
-    padding: 15px 12px;
-    text-align: right;
-    background-color: rgba(255,255,255,0.04);
+    padding: 15px 12px; text-align: right; background-color: rgba(255,255,255,0.04);
     border-bottom: 1px solid rgba(255,255,255,0.06);
 }
 #adminReservationsTable th {
-    background-color: rgba(255,255,255,0.08);
-    color: var(--color-text-headings); font-weight: 600;
-    border-bottom-width: 2px; border-bottom-color: var(--color-primary);
+    background-color: rgba(255,255,255,0.08); color: var(--color-text-headings);
+    font-weight: 600; border-bottom-width: 2px; border-bottom-color: var(--color-primary);
     font-size: 1rem;
 }
 #adminReservationsTable tr:not(:first-child) td { transition: background-color 0.2s ease; }
@@ -409,50 +356,117 @@ body {
 #adminReservationsTable th:first-child, #adminReservationsTable tr td:first-child { border-top-right-radius: var(--border-radius-small); border-bottom-right-radius: var(--border-radius-small); }
 #adminReservationsTable th:last-child, #adminReservationsTable tr td:last-child { border-top-left-radius: var(--border-radius-small); border-bottom-left-radius: var(--border-radius-small); }
 #adminReservationsTable tr.past-event td {
-    background-color: rgba(100, 100, 100, 0.15);
-    color: #999; opacity: 0.7;
+    background-color: rgba(100, 100, 100, 0.15); color: #999; opacity: 0.7;
 }
 
 /* --- کلاس‌های کمکی --- */
 .hidden { display: none !important; }
 .message {
-    margin-top: 25px; padding: 15px 20px;
-    border-radius: var(--border-radius-medium);
-    font-weight: 500; text-align: center;
-    font-size: 1rem; border-width: 1px; border-style: solid;
+    margin-top: 25px; padding: 15px 20px; border-radius: var(--border-radius-medium);
+    font-weight: 500; text-align: center; font-size: 1rem;
+    border-width: 1px; border-style: solid;
 }
 .error-message {
-    background-color: rgba(231, 76, 60, 0.15);
-    color: var(--color-danger);
+    background-color: rgba(231, 76, 60, 0.15); color: var(--color-danger);
     border-color: rgba(231, 76, 60, 0.3);
 }
 .success-message {
-    background-color: rgba(46, 204, 113, 0.15);
-    color: var(--color-secondary);
+    background-color: rgba(46, 204, 113, 0.15); color: var(--color-secondary);
     border-color: rgba(46, 204, 113, 0.3);
 }
 
+/* --- استایل Modal برای بزرگنمایی عکس --- */
+.modal {
+    display: none; 
+    position: fixed; 
+    z-index: 2000; 
+    padding-top: 50px; 
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto; 
+    background-color: rgba(0,0,0,0.85); 
+    -webkit-backdrop-filter: blur(5px); 
+    backdrop-filter: blur(5px);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    width: auto; 
+    max-width: 90%; 
+    max-height: 80vh; 
+    animation-name: zoomInModal;
+    animation-duration: 0.4s;
+}
+@keyframes zoomInModal {
+    from {transform: scale(0.5); opacity: 0;}
+    to {transform: scale(1); opacity: 1;}
+}
+#modalCaption {
+    margin: 15px auto;
+    display: block;
+    width: 80%;
+    max-width: 700px;
+    text-align: center;
+    color: #ccc;
+    padding: 10px 0;
+    height: 50px; 
+    font-size: 1.1rem;
+}
+.modal-close-button {
+    position: absolute;
+    top: 15px;
+    right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    transition: 0.3s;
+    cursor: pointer;
+}
+.modal-close-button:hover,
+.modal-close-button:focus {
+    color: #bbb;
+    text-decoration: none;
+}
+
 /* --- تنظیمات رسپانسیو --- */
-@media (max-width: 768px) {
+@media (max-width: 768px) { /* تبلت و موبایل بزرگتر */
     #appMain { padding-top: calc(var(--header-height) + 15px); }
     .view-section h2, .view-section h3 { font-size: 1.6rem; }
-    /* در اینجا هم مطمئن می‌شویم که گرید اقلام در این سایز دو ستونه است */
     .items-grid { 
-        grid-template-columns: repeat(2, 1fr) !important; /* !important برای اولویت بالاتر */
+        /* در حالت کلی دو ستونه برای تبلت */
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; 
+    }
+    /* برای گرید مخصوص رزرو، آن را تک ستونه می‌کنیم */
+    .items-grid.reservation-specific-grid {
+        grid-template-columns: 1fr; /* تک ستونه در تبلت و موبایل */
+        gap: 15px;
     }
 }
-@media (max-width: 480px) {
+@media (max-width: 480px) { /* موبایل خیلی کوچک */
     html { font-size: 15px; }
-    #appHeader button { padding: 8px 15px; font-size: 0.9rem; }
-    .item-card { padding: 15px; }
-    .item-card img, .item-card .color-swatch { height: 130px; }
-    .form-container input[type="text"],
-    .form-container input[type="tel"],
-    .form-container button#submitReservationBtn { font-size: 1rem; padding: 14px 18px; }
-    .quantity-controls button { width: 34px; height: 34px; font-size: 1.4em; }
-    .quantity-controls span { font-size: 1.15rem; }
-    .calendar-day { padding: 15px 8px; font-size: 0.85rem; }
-    /* برای موبایل خیلی کوچک، گرید اقلام تک ستونه می‌شود (که در بخش .items-grid@media (max-width: 600px) تعریف شده)*/
-    /* اما اگر حتما دو ستونه می‌خواهید حتی در این سایز: */
-    /* .items-grid { grid-template-columns: repeat(2, 1fr) !important; } */
+    #appHeader button { padding: 8px 12px; font-size: 0.85rem; margin: 3px 5px; }
+    #appMain { padding-left: 8px; padding-right: 8px; }
+    .view-section { padding: 15px; }
+    /* همه گریدها (از جمله گرید اصلی و گرید رزرو) در این سایز تک ستونه می‌شوند */
+    .items-grid { 
+        grid-template-columns: 1fr;
+        gap: 12px; 
+    }
+    .item-card { padding: 12px; }
+    .item-card img, .item-card .color-swatch { height: 120px; max-width: 120px; margin-bottom: 10px; }
+    .item-card h4 { font-size: 1rem; margin-bottom: 6px; }
+    .item-card p { font-size: 0.8rem; margin-bottom: 10px; }
+    .quantity-controls button { width: 30px; height: 30px; font-size: 1.3em; margin: 0 8px;}
+    .quantity-controls span { font-size: 1.1rem; }
+    .calendar-grid { grid-template-columns: repeat(auto-fill, minmax(90px, 1fr)); gap: 8px;}
+    .calendar-day { padding: 12px 5px; font-size: 0.8rem; }
+    .form-container input[type="text"], .form-container input[type="tel"],
+    .form-container button#submitReservationBtn { font-size: 0.95rem; padding: 12px 15px; }
+
+    .modal-content { max-width: 95%; max-height: 75vh; }
+    #modalCaption { font-size: 1rem; }
+    .modal-close-button { font-size: 35px; top: 10px; right: 20px;}
 }
