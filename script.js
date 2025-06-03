@@ -1,18 +1,38 @@
-// script.js - نسخه با اصلاح نمایش موجودی و موجودی کتیبه‌ها
+// script.js - نسخه با بازه تاریخ جدید و لیست کامل اقلام
 
-// اطلاعات اقلام با اصلاح موجودی کتیبه‌ها
+// *** تغییر کلیدی: لیست کامل اقلام با کتیبه‌های جدید شما ***
 const itemsData = [
     {
-        id: "katibe1", name: "کتیبه مدل ۱", image: "katibe1.jpg",
+        id: "katibe1", name: "کتیبه یا حیدر...", image: "katibe1.jpg", // نام فایل عکس را چک کنید
         description: "کتیبه پارچه‌ای زیبا برای تزئین مراسم غدیر.", stock: 1, maxPerUser: 1
     },
     {
-        id: "katibe2", name: "کتیبه مدل ۲", image: "katibe2.jpg",
+        id: "katibe2", name: "کتیبه کهکشان...", image: "katibe2.jpg", // نام فایل عکس را چک کنید
         description: "کتیبه با طرح ویژه غدیر، مناسب برای فضاسازی.", stock: 1, maxPerUser: 1
     },
     {
-        id: "katibe3", name: "کتیبه مدل ۳", image: "katibe3.jpg",
+        id: "katibe3", name: "کتیبه گل گلها..", image: "katibe3.jpg", // نام فایل عکس را چک کنید
         description: "کتیبه عمودی با طراحی اسلامی برای جشن‌ها.", stock: 1, maxPerUser: 1
+    },
+    {
+        id: "khodarashokrKatibe", name: "خداراشکر مولایم علی شد", image: "Khodarashokr.jpg", // نام فایل عکس را چک کنید
+        description: "", stock: 1, maxPerUser: 1
+    },
+    {
+        id: "katibeAbiHeydar", name: "فقط حیدر امیرالمومنین است", image: "KatibeAbi.jpg", // نام فایل عکس را چک کنید
+        description: "", stock: 1, maxPerUser: 1
+    },
+    {
+        id: "katibeZardAmir", name: "امیرالمومنین", image: "Katibezard.jpg", // نام فایل عکس را چک کنید
+        description: "", stock: 1, maxPerUser: 1
+    },
+    {
+        id: "aliValAlahKatibe", name: "علی ولی الله", image: "AliValAlah.jpg", // نام فایل عکس را چک کنید
+        description: "", stock: 1, maxPerUser: 1
+    },
+    {
+        id: "yaMortezaAliKatibe", name: "یا مرتضی علی", image: "YaMortezaAli.jpg", // نام فایل عکس را چک کنید
+        description: "", stock: 1, maxPerUser: 1
     },
     {
         id: "payenor", name: "پایه نور", image: "payenor.jpg",
@@ -23,27 +43,27 @@ const itemsData = [
         description: "پروژکتور LED قدرتمند 100 واتی برای روشنایی وسیع.", stock: 12, maxPerUser: 4
     },
     {
-        id: "rgbLight", name: "چراغ RGB (پارس لایت)", image: "RGB.jpg",
+        id: "rgbLight", name: "چراغ RGB (پارس لایت)", image: "RGB.jpg", // نام فایل عکس را چک کنید
         description: "چراغ رنگی RGB با قابلیت تغییر رنگ برای افکت‌های نوری.", stock: 8, maxPerUser: 3
     },
     {
-        id: "fabricBanner", name: "ریسه رنگی پارچه‌ای (بنر)", image: "reseparche.jpg",
+        id: "fabricBanner", name: "ریسه رنگی پارچه‌ای (بنر)", image: "reseparche.jpg", // نام فایل عکس را چک کنید
         description: "ریسه پارچه‌ای رنگارنگ و زیبا برای تزئین محیط جشن.", stock: 20, maxPerUser: 6
     },
     {
-        id: "pallet", name: "پالت پلاستیکی", image: "palet.jpg",
+        id: "pallet", name: "پالت پلاستیکی", image: "palet.jpg", // نام فایل عکس را چک کنید
         description: "پالت پلاستیکی محکم برای قرار دادن وسایل یا ایجاد سن.", stock: 16, maxPerUser: 16
     },
     {
-        id: "ledStringWarm", name: "ریسه LED (آفتابی)", image: "rese.led.jpg",
+        id: "ledStringWarm", name: "ریسه LED (آفتابی)", image: "rese.led.jpg", // نام فایل عکس را چک کنید
         description: "ریسه LED با نور گرم آفتابی برای ایجاد فضایی دنج.", stock: 10, maxPerUser: 3
     },
     {
-        id: "stapleGun", name: "منگنه کوب دیواری", image: "manganekob.jpg",
+        id: "stapleGun", name: "منگنه کوب دیواری", image: "manganekob.jpg", // نام فایل عکس را چک کنید
         description: "منگنه کوب دستی برای نصب بنر (بدون خشاب منگنه).", stock: 4, maxPerUser: 1
     },
     {
-        id: "waterCooler30L", name: "کلمن بزرگ 30 لیتری", image: "kolman.jpg",
+        id: "waterCooler30L", name: "کلمن بزرگ 30 لیتری", image: "kolman.jpg", // نام فایل عکس را چک کنید
         description: "کلمن آب بزرگ با ظرفیت 30 لیتر، مناسب پذیرایی.", stock: 3, maxPerUser: 1
     },
     {
@@ -51,25 +71,28 @@ const itemsData = [
         description: "پمپ برقی برای باد کردن سریع و آسان بادکنک‌ها.", stock: 4, maxPerUser: 1
     },
     {
-        id: "cupHolderTray", name: "سینی جا لیوانی", image: "sini.webp",
+        id: "cupHolderTray", name: "سینی جا لیوانی", image: "sini.webp", // نام فایل عکس را چک کنید
         description: "سینی پلاستیکی با جای مخصوص برای قرار دادن لیوان‌ها.", stock: 12, maxPerUser: 4
     },
     {
-        id: "bingoSpinner", name: "گردونه شانس بینگو (کوچک)", image: "bingo.jpg",
+        id: "bingoSpinner", name: "گردونه شانس بینگو (کوچک)", image: "bingo.jpg", // نام فایل عکس را چک کنید
         description: "گردونه کوچک برای قرعه‌کشی و بازی‌های سرگرم‌کننده.", stock: 1, maxPerUser: 1
     },
     {
-        id: "projectorAndScreen", name: "پروژکتور و پرده نمایش", image: "data.jpeg",
+        id: "projectorAndScreen", name: "پروژکتور و پرده نمایش", image: "data.jpeg", // نام فایل عکس را چک کنید
         description: "مجموعه پروژکتور به همراه پرده نمایش برای ارائه محتوا.", stock: 1, maxPerUser: 1
     },
     {
-        id: "clipboard", name: "تخته شاسی (A4)", image: "shasi.jpg",
+        id: "clipboard", name: "تخته شاسی (A4)", image: "shasi.jpg", // نام فایل عکس را چک کنید
         description: "تخته شاسی چوبی برای استفاده مجری، گروه سرود (A4).", stock: 10, maxPerUser: 3
     },
     {
-        id: "powerStrip", name: "سه راهی برق (4 خانه)", image: "serah.webp",
+        id: "powerStrip", name: "سه راهی برق (4 خانه)", image: "serah.webp", // نام فایل عکس را چک کنید
         description: "سه راهی برق با چهار پریز برای اتصال دستگاه‌های الکتریکی.", stock: 4, maxPerUser: 1
     },
+    // کتیبه‌های جدید شما
+    
+    // پارچه‌ها
     {id: "fabricRed", name: "پارچه قرمز", color: "#EF231A", isColorSample: true, description: "پارچه قرمز رنگ (۸متر × ۳متر).", stock: 2, maxPerUser: 1},
     {id: "fabricYellow", name: "پارچه زرد", color: "#F3D80D", isColorSample: true, description: "پارچه زرد رنگ (۸متر × ۳متر).", stock: 2, maxPerUser: 1},
     {id: "fabricOrange", name: "پارچه نارنجی", color: "#EC4A02", isColorSample: true, description: "پارچه نارنجی رنگ (۸متر × ۳متر).", stock: 2, maxPerUser: 1},
@@ -149,22 +172,27 @@ function createItemCard(item, isForReservation = false, effectiveMaxForUserToday
     if (item.isColorSample) {
         itemImageHtml = `<div class="color-swatch" style="background-color: ${item.color};"></div>`;
     } else {
-        itemImageHtml = `<img src="${item.image}" alt="${item.name}">`;
+        // اطمینان از اینکه item.image وجود دارد
+        itemImageHtml = `<img src="${item.image || 'placeholder.jpg'}" alt="${item.name}">`; // اگر عکس نبود، یک placeholder
     }
 
     let controlsHtml = '';
+    // *** تغییر کلیدی: حذف نمایش item.description از کارت‌ها ***
+    // let descriptionHtml = `<p>${item.description || ''}</p>`; // توضیحات دیگر نمایش داده نمی‌شود
+
     if (isForReservation) {
+        // descriptionHtml = ''; // در حالت رزرو هم توضیحات نمایش داده نمی‌شود
         const quantityInCart = currentCart[item.id] || 0;
         const actualStockForDay = item.stock - (dailyItemUsage[item.id] || 0);
 
-        if (actualStockForDay > 0 && effectiveMaxForUserToday > 0) { // چک می‌کنیم که هم موجودی روز و هم سهمیه کاربر بیشتر از صفر باشد
+        if (effectiveMaxForUserToday > 0) {
             controlsHtml = `
                 <div class="quantity-controls">
                     <button class="plus-btn" data-item-id="${item.id}" data-effective-max="${effectiveMaxForUserToday}">+</button>
                     <span class="quantity-display">${quantityInCart}</span>
                     <button class="minus-btn" data-item-id="${item.id}" ${quantityInCart === 0 ? 'disabled' : ''}>-</button>
                 </div>
-                <p class="item-availability">حداکثر قابل انتخاب: ${effectiveMaxForUserToday} (موجودی روز: ${actualStockForDay})</p>`;
+                <p class="item-availability">حداکثر قابل انتخاب: ${effectiveMaxForUserToday} (موجودی روز: ${actualStockForDay > 0 ? actualStockForDay : 0})</p>`;
         } else {
             controlsHtml = `<p class="item-unavailable">موجودی این قلم برای امروز تمام شده است.</p>`;
         }
@@ -173,9 +201,9 @@ function createItemCard(item, isForReservation = false, effectiveMaxForUserToday
     card.innerHTML = `
         ${itemImageHtml}
         <h4>${item.name}</h4>
-        <p>${item.description}</p>
-        ${controlsHtml}
+        ${controlsHtml} 
     `;
+    // خط مربوط به descriptionHtml حذف شد
     return card;
 }
 
@@ -183,11 +211,24 @@ function createItemCard(item, isForReservation = false, effectiveMaxForUserToday
 function renderAllItems() {
     allItemsGrid.innerHTML = '';
     itemsData.forEach(item => {
-        allItemsGrid.appendChild(createItemCard(item, false));
+        const card = createItemCard(item, false); // توضیحات در این حالت هم نمایش داده نمی‌شود
+        allItemsGrid.appendChild(card);
     });
 }
 
+// *** تغییر کلیدی: به‌روزرسانی آرایه eventDates ***
 const eventDates = [
+    { day: 15, month: 'خرداد', year: 1403, iso: '2024-06-04', shamsi: '۱۴۰۳/۰۳/۱۵', dayName: 'سه‌شنبه' },
+    { day: 16, month: 'خرداد', year: 1403, iso: '2024-06-05', shamsi: '۱۴۰۳/۰۳/۱۶', dayName: 'چهارشنبه' },
+    { day: 17, month: 'خرداد', year: 1403, iso: '2024-06-06', shamsi: '۱۴۰۳/۰۳/۱۷', dayName: 'پنجشنبه' },
+    { day: 18, month: 'خرداد', year: 1403, iso: '2024-06-07', shamsi: '۱۴۰۳/۰۳/۱۸', dayName: 'جمعه' },
+    { day: 19, month: 'خرداد', year: 1403, iso: '2024-06-08', shamsi: '۱۴۰۳/۰۳/۱۹', dayName: 'شنبه' },
+    { day: 20, month: 'خرداد', year: 1403, iso: '2024-06-09', shamsi: '۱۴۰۳/۰۳/۲۰', dayName: 'یکشنبه' },
+    { day: 21, month: 'خرداد', year: 1403, iso: '2024-06-10', shamsi: '۱۴۰۳/۰۳/۲۱', dayName: 'دوشنبه' },
+    { day: 22, month: 'خرداد', year: 1403, iso: '2024-06-11', shamsi: '۱۴۰۳/۰۳/۲۲', dayName: 'سه‌شنبه' },
+    { day: 23, month: 'خرداد', year: 1403, iso: '2024-06-12', shamsi: '۱۴۰۳/۰۳/۲۳', dayName: 'چهارشنبه' },
+    { day: 24, month: 'خرداد', year: 1403, iso: '2024-06-13', shamsi: '۱۴۰۳/۰۳/۲۴', dayName: 'پنجشنبه' },
+    { day: 25, month: 'خرداد', year: 1403, iso: '2024-06-14', shamsi: '۱۴۰۳/۰۳/۲۵', dayName: 'جمعه' },
     { day: 26, month: 'خرداد', year: 1403, iso: '2024-06-15', shamsi: '۱۴۰۳/۰۳/۲۶', dayName: 'شنبه' },
     { day: 27, month: 'خرداد', year: 1403, iso: '2024-06-16', shamsi: '۱۴۰۳/۰۳/۲۷', dayName: 'یکشنبه' },
     { day: 28, month: 'خرداد', year: 1403, iso: '2024-06-17', shamsi: '۱۴۰۳/۰۳/۲۸', dayName: 'دوشنبه' },
@@ -197,8 +238,7 @@ const eventDates = [
     { day: 1, month: 'تیر', year: 1403, iso: '2024-06-21', shamsi: '۱۴۰۳/۰۴/۰۱', dayName: 'جمعه' },
     { day: 2, month: 'تیر', year: 1403, iso: '2024-06-22', shamsi: '۱۴۰۳/۰۴/۰۲', dayName: 'شنبه' },
     { day: 3, month: 'تیر', year: 1403, iso: '2024-06-23', shamsi: '۱۴۰۳/۰۴/۰۳', dayName: 'یکشنبه' },
-    { day: 4, month: 'تیر', year: 1403, iso: '2024-06-24', shamsi: '۱۴۰۳/۰۴/۰۴', dayName: 'دوشنبه' },
-    { day: 5, month: 'تیر', year: 1403, iso: '2024-06-25', shamsi: '۱۴۰۳/۰۴/۰۵', dayName: 'سه‌شنبه' },
+    { day: 4, month: 'تیر', year: 1403, iso: '2024-06-24', shamsi: '۱۴۰۳/۰۴/۰۴', dayName: 'دوشنبه' }
 ];
 
 function renderCalendarUI() {
@@ -247,7 +287,12 @@ async function fetchDailyItemUsage(isoDate) {
     isFetchingDailyUsage = true;
     reservationItemsGrid.innerHTML = '<p>در حال دریافت موجودی اقلام برای این روز...</p>';
     dailyItemUsage = {}; 
-    if (!GOOGLE_SHEET_WEB_APP_URL) { console.warn("URL وب اپ گوگل شیت تنظیم نشده."); isFetchingDailyUsage = false; return; }
+    if (!GOOGLE_SHEET_WEB_APP_URL) {
+        console.warn("URL وب اپ گوگل شیت تنظیم نشده. نمی‌توان موجودی روزانه را گرفت.");
+        isFetchingDailyUsage = false;
+        itemsData.forEach(item => dailyItemUsage[item.id] = 0); 
+        return;
+    }
     try {
         const url = new URL(GOOGLE_SHEET_WEB_APP_URL);
         url.searchParams.append('action', 'getReservedItemsByDate');
@@ -257,15 +302,29 @@ async function fetchDailyItemUsage(isoDate) {
             const result = await response.json();
             if (result.status === 'success' && typeof result.data === 'object') {
                 dailyItemUsage = result.data;
-            } else { console.error("خطا در دریافت موجودی روزانه از سرور:", result.message); }
-        } else { console.error("خطای شبکه دریافت موجودی روزانه:", response.status, await response.text()); }
-    } catch (error) { console.error("خطای کلی دریافت موجودی روزانه:", error); }
-    finally { isFetchingDailyUsage = false; }
+            } else {
+                console.error("خطا در دریافت موجودی روزانه از سرور:", result.message);
+                itemsData.forEach(item => dailyItemUsage[item.id] = 0);
+            }
+        } else {
+            console.error("خطای شبکه دریافت موجودی روزانه:", response.status, await response.text());
+            itemsData.forEach(item => dailyItemUsage[item.id] = 0);
+        }
+    } catch (error) {
+        console.error("خطای کلی دریافت موجودی روزانه:", error);
+        itemsData.forEach(item => dailyItemUsage[item.id] = 0);
+    }
+    finally {
+        isFetchingDailyUsage = false;
+    }
 }
 
 function renderReservationItems() {
     reservationItemsGrid.innerHTML = '';
-    if (!selectedEventDate) { reservationItemsGrid.innerHTML = '<p>لطفاً تاریخ انتخاب کنید.</p>'; return; }
+    if (!selectedEventDate) {
+        reservationItemsGrid.innerHTML = '<p>لطفاً ابتدا یک تاریخ از تقویم انتخاب کنید.</p>';
+        return;
+    }
     itemsData.forEach(item => {
         const alreadyReservedCount = dailyItemUsage[item.id] || 0;
         const stockForToday = item.stock - alreadyReservedCount;
@@ -322,7 +381,7 @@ function showFinalizeForm() {
         const quantity = currentCart[itemId];
         if (item && quantity > 0) {
             const li = document.createElement('li');
-            li.textContent = `${item.name}: ${quantity} عدد/متر`;
+            li.textContent = `${item.name}: ${quantity}`; // واحد را هم می‌توانید اضافه کنید اگر لازم است
             finalSelectedItemsList.appendChild(li);
         }
     }
@@ -332,6 +391,7 @@ function showFinalizeForm() {
 
 // --- Event Listeners ---
 btnAllItems.addEventListener('click', () => { renderAllItems(); showView('allItemsView'); });
+
 async function fetchAllReservationsAndUpdateCalendar() {
     if (isFetchingReservations) { return; }
     isFetchingReservations = true;
@@ -340,26 +400,32 @@ async function fetchAllReservationsAndUpdateCalendar() {
     catch (error) { console.error("Error in fetchAllReservationsAndUpdateCalendar:", error); calendarGrid.innerHTML = 'خطا در بارگذاری ظرفیت.'; }
     finally { isFetchingReservations = false; renderCalendarUI(); }
 }
+
 btnReserve.addEventListener('click', async () => {
     calendarContainer.classList.remove('hidden'); itemSelectionContainer.classList.add('hidden');
     btnChangeDate.classList.add('hidden'); showView('reserveView');
     await fetchAllReservationsAndUpdateCalendar();
 });
+
 btnChangeDate.addEventListener('click', async () => {
     calendarContainer.classList.remove('hidden'); itemSelectionContainer.classList.add('hidden');
     btnChangeDate.classList.add('hidden'); selectedEventDate = null; currentCart = {}; dailyItemUsage = {};
     await fetchAllReservationsAndUpdateCalendar();
 });
+
 btnFinalizeLogin.addEventListener('click', () => {
     if (currentView === 'reserveView' && selectedEventDate && Object.keys(currentCart).length > 0) { showFinalizeForm(); }
     else if (currentView === 'reserveView' && selectedEventDate && Object.keys(currentCart).length === 0) { alert("لطفاً ابتدا اقلامی را انتخاب کنید."); }
     else if (currentView === 'reserveView' && !selectedEventDate) { alert("لطفاً ابتدا تاریخ جشن را انتخاب کنید."); }
     else { showFinalizeForm(); }
 });
+
 submitReservationBtn.addEventListener('click', handleSubmitOrLogin);
+
 async function handleSubmitOrLogin() {
     const name = fullNameInput.value.trim();
     const phone = phoneInput.value.trim();
+
     if (name === "admin" && phone === "kerayechi110") {
         alert("ورود ادمین موفقیت آمیز بود!"); fullNameInput.value = ''; phoneInput.value = ''; showAdminPanel(); return;
     }
@@ -367,23 +433,38 @@ async function handleSubmitOrLogin() {
     if (!/^09\d{9}$/.test(phone)) { formMessage.textContent = "شماره تلفن معتبر نیست."; formMessage.className = 'message error-message'; return; }
     if (Object.keys(currentCart).length === 0) { formMessage.textContent = "سبد خرید شما خالی است."; formMessage.className = 'message error-message'; return; }
     if (!selectedEventDate) { formMessage.textContent = "تاریخ جشن انتخاب نشده است."; formMessage.className = 'message error-message'; showView('reserveView'); return; }
+
     formMessage.textContent = "در حال بررسی ظرفیت نهایی با سرور... لطفاً صبر کنید.";
     formMessage.className = 'message';
     submitReservationBtn.disabled = true;
+
     try {
         const capacityCheckUrl = new URL(GOOGLE_SHEET_WEB_APP_URL);
         capacityCheckUrl.searchParams.append('action', 'checkCapacity');
         capacityCheckUrl.searchParams.append('date', selectedEventDate.iso);
+        
+        // console.log(`%cSUBMIT: Checking capacity with server for date: ${selectedEventDate.iso}`, "color: red; font-weight: bold;");
         const capacityResponse = await fetch(capacityCheckUrl.toString(), { method: 'GET', mode: 'cors', cache: 'no-cache' });
-        if (!capacityResponse.ok) { const errorText = await capacityResponse.text(); throw new Error(`خطا در بررسی ظرفیت با سرور: ${capacityResponse.status}. ${errorText}`); }
+        
+        if (!capacityResponse.ok) {
+            const errorText = await capacityResponse.text();
+            throw new Error(`خطا در بررسی ظرفیت با سرور: ${capacityResponse.status}. ${errorText}`);
+        }
+        
         const capacityResult = await capacityResponse.json();
-        if (capacityResult.status === "error") { throw new Error(`خطا از سرور هنگام بررسی ظرفیت: ${capacityResult.message}`); }
+        // console.log(`%cSUBMIT: Server capacity check result for ${selectedEventDate.iso}: ${JSON.stringify(capacityResult)}`, "color: red;");
+
+        if (capacityResult.status === "error") {
+            throw new Error(`خطا از سرور هنگام بررسی ظرفیت: ${capacityResult.message}`);
+        }
+
         if (capacityResult.count != null && capacityResult.count >= 3) {
             formMessage.textContent = `متاسفانه ظرفیت رزرو برای تاریخ ${selectedEventDate.shamsi} (بر اساس بررسی نهایی سرور) تکمیل شده است. لطفا تاریخ دیگری را انتخاب کنید.`;
             formMessage.className = 'message error-message';
             submitReservationBtn.disabled = false;
             return;
         }
+        
         formMessage.textContent = "ظرفیت موجود است. در حال ارسال اطلاعات رزرو...";
         const submissionTimestamp = new Date();
         const submissionDateISO = submissionTimestamp.toISOString().split('T')[0];
@@ -392,6 +473,7 @@ async function handleSubmitOrLogin() {
             eventDateShamsi: selectedEventDate.shamsi, reservedItems: JSON.stringify(currentCart),
             submissionDateISO: submissionDateISO, submissionDateShamsi: ""
         };
+        
         const formData = new URLSearchParams();
         formData.append('fullName', reservationData.fullName);
         formData.append('phoneNumber', reservationData.phoneNumber);
@@ -400,7 +482,9 @@ async function handleSubmitOrLogin() {
         formData.append('reservedItems', reservationData.reservedItems);
         formData.append('submissionDateISO', reservationData.submissionDateISO);
         formData.append('submissionDateShamsi', reservationData.submissionDateShamsi);
+
         const postResponse = await fetch(GOOGLE_SHEET_WEB_APP_URL, { method: 'POST', mode: 'cors', cache: 'no-cache', body: formData });
+        
         if (postResponse.ok) {
             const postResult = await postResponse.json();
             if (postResult.status === "success") {
@@ -408,25 +492,37 @@ async function handleSubmitOrLogin() {
                 formMessage.className = 'message success-message';
                 await fetchAllReservationsForLimitCheck(); 
                 dailyItemUsage = {};
+                // console.log(`%cSUBMIT: Reservation successful on server. allReservations updated. New Count: ${allReservations.length}`, "color: green;");
                 fullNameInput.value = ''; phoneInput.value = ''; currentCart = {}; selectedEventDate = null;
                 setTimeout(() => { renderAllItems(); showView('allItemsView'); }, 2000);
             } else if (postResult.status === "limit_reached") { 
                 formMessage.textContent = `متاسفانه در آخرین لحظه ظرفیت برای تاریخ ${selectedEventDate.shamsi} تکمیل شد. رزرو شما ثبت نشد. لطفاً تاریخ دیگری را انتخاب کنید.`;
                 formMessage.className = 'message error-message';
                 await fetchAllReservationsAndUpdateCalendar();
-            } else { throw new Error(postResult.message || "خطا در پاسخ از گوگل شیت پس از ارسال."); }
-        } else { const errorText = await postResponse.text(); throw new Error(`خطا در ارتباط با سرور هنگام ثبت (کد وضعیت: ${postResponse.status}). جزئیات: ${errorText}`); }
+            }
+            else {
+                throw new Error(postResult.message || "خطا در پاسخ از گوگل شیت پس از ارسال.");
+            }
+        } else {
+             const errorText = await postResponse.text();
+             console.error("Server POST response error text:", errorText);
+             throw new Error(`خطا در ارتباط با سرور هنگام ثبت (کد وضعیت: ${postResponse.status}). جزئیات: ${errorText}`);
+        }
     } catch (error) {
         console.error("Error in handleSubmitOrLogin:", error);
         formMessage.textContent = `خطا: ${error.message}. لطفاً دوباره تلاش کنید.`;
         formMessage.className = 'message error-message';
-    } finally { submitReservationBtn.disabled = false; }
+    } finally {
+        submitReservationBtn.disabled = false;
+    }
 }
+
 // --- توابع مربوط به پنل ادمین ---
 async function showAdminPanel() {
     showView('adminView');
     await fetchAndRenderAdminData();
 }
+
 async function fetchAndRenderAdminData() {
     adminReservationsTableBody.innerHTML = '<tr><td colspan="4">در حال بارگذاری اطلاعات...</td></tr>';
     if (!GOOGLE_SHEET_WEB_APP_URL) { adminReservationsTableBody.innerHTML = '<tr><td colspan="4">URL تنظیم نشده.</td></tr>'; return; }
@@ -451,6 +547,7 @@ async function fetchAndRenderAdminData() {
         adminReservationsTableBody.innerHTML = `<tr><td colspan="4">خطا: ${error.message}</td></tr>`;
     }
 }
+
 function renderAdminTable(reservationsToRender) {
     adminReservationsTableBody.innerHTML = '';
     if (!reservationsToRender || reservationsToRender.length === 0) {
@@ -468,7 +565,8 @@ function renderAdminTable(reservationsToRender) {
             const itemsObj = JSON.parse(res.reservedItems || '{}');
             const formattedItems = Object.entries(itemsObj).map(([itemId, quantity]) => {
                 const itemDetails = itemsData.find(i => i.id === itemId);
-                return `• ${itemDetails ? itemDetails.name : itemId}: ${quantity}`;
+                const displayName = (itemDetails && itemDetails.displayNameForUser) ? itemDetails.displayNameForUser : (itemDetails ? itemDetails.name : itemId);
+                return `• ${displayName}: ${quantity}`;
             });
             if (formattedItems.length > 0) itemsText = formattedItems.join('\n'); else itemsText = "بدون قلم";
         } catch (e) { itemsText = "خطا در نمایش اقلام"; }
@@ -476,19 +574,27 @@ function renderAdminTable(reservationsToRender) {
         if (res.eventDateISO < todayISO) row.classList.add('past-event');
     });
 }
+
 refreshAdminDataBtn.addEventListener('click', fetchAndRenderAdminData);
+
 function countReservationsForDate(isoDate) {
     if (!allReservations || allReservations.length === 0) return 0;
     const count = allReservations.filter(res => res.eventDateISO === isoDate).length;
+    // console.log(`%cClient-side Count for ${isoDate}: ${count} (from allReservations with ${allReservations.length} entries)`, "color: teal;");
     return count;
 }
+
 async function fetchAllReservationsForLimitCheck() {
     if (!GOOGLE_SHEET_WEB_APP_URL) {
         console.warn("Google Sheet URL not set. Setting allReservations to empty.");
         allReservations = []; return;
     }
-    if (isFetchingReservations) { return; }
+    if (isFetchingReservations) {
+        // console.log("fetchAllReservationsForLimitCheck: Already fetching. Skipping.");
+        return;
+    }
     isFetchingReservations = true;
+    // console.log("%cFETCHING ALL RESERVATIONS FROM SERVER...", "color: #FF8C00; font-weight: bold;");
     try {
         const fetchUrl = new URL(GOOGLE_SHEET_WEB_APP_URL);
         fetchUrl.searchParams.append('action', 'getReservations');
@@ -501,22 +607,25 @@ async function fetchAllReservationsForLimitCheck() {
                     eventDateISO: row[3], eventDateShamsi: row[4], reservedItems: row[5],
                     submissionDateISO: row[6], submissionDateShamsi: row[7],
                 })).filter(res => res.eventDateISO && typeof res.eventDateISO === 'string');
+                // console.log(`%cSuccessfully fetched and updated allReservations. Count: ${allReservations.length}`, "color: #FF8C00;");
             } else {
-                 console.warn("fetchAllReservationsForLimitCheck: Could not parse or error in response. Message:", result.message);
+                 console.warn("fetchAllReservationsForLimitCheck: Could not parse or error in response. Message:", result.message, ". Setting allReservations to empty.");
                  allReservations = [];
             }
         } else {
             const errorText = await response.text();
-            console.warn("fetchAllReservationsForLimitCheck: Server error. Status:", response.status, "Error Text:", errorText);
+            console.warn("fetchAllReservationsForLimitCheck: Server error. Status:", response.status, "Error Text:", errorText, ". Setting allReservations to empty.");
             allReservations = [];
         }
     } catch (error) {
-        console.warn("fetchAllReservationsForLimitCheck: Network or other error:", error);
+        console.warn("fetchAllReservationsForLimitCheck: Network or other error:", error, ". Setting allReservations to empty.");
         allReservations = [];
     } finally {
         isFetchingReservations = false;
+        // console.log("%cfetchAllReservationsForLimitCheck: Fetch finished.", "color: #FF8C00;");
     }
 }
+
 function convertToShamsi(isoDateString) {
     if (!isoDateString) return "";
     try {
@@ -530,6 +639,7 @@ function convertToShamsi(isoDateString) {
         return `${shamsiYear}/${dateObj.getMonth() + 1}/${dateObj.getDate()} (تبدیل شمسی نام دقیق)`;
     } catch (e) { return isoDateString + " (خطا در تبدیل)"; }
 }
+
 // --- Initial Setup ---
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
