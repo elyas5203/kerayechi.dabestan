@@ -218,27 +218,27 @@ function renderAllItems() {
 
 // *** تغییر کلیدی: به‌روزرسانی آرایه eventDates ***
 const eventDates = [
-    { day: 15, month: 'خرداد', year: 1403, iso: '2024-06-04', shamsi: '۱۴۰۳/۰۳/۱۵', dayName: 'سه‌شنبه' },
-    { day: 16, month: 'خرداد', year: 1403, iso: '2024-06-05', shamsi: '۱۴۰۳/۰۳/۱۶', dayName: 'چهارشنبه' },
-    { day: 17, month: 'خرداد', year: 1403, iso: '2024-06-06', shamsi: '۱۴۰۳/۰۳/۱۷', dayName: 'پنجشنبه' },
-    { day: 18, month: 'خرداد', year: 1403, iso: '2024-06-07', shamsi: '۱۴۰۳/۰۳/۱۸', dayName: 'جمعه' },
-    { day: 19, month: 'خرداد', year: 1403, iso: '2024-06-08', shamsi: '۱۴۰۳/۰۳/۱۹', dayName: 'شنبه' },
-    { day: 20, month: 'خرداد', year: 1403, iso: '2024-06-09', shamsi: '۱۴۰۳/۰۳/۲۰', dayName: 'یکشنبه' },
-    { day: 21, month: 'خرداد', year: 1403, iso: '2024-06-10', shamsi: '۱۴۰۳/۰۳/۲۱', dayName: 'دوشنبه' },
-    { day: 22, month: 'خرداد', year: 1403, iso: '2024-06-11', shamsi: '۱۴۰۳/۰۳/۲۲', dayName: 'سه‌شنبه' },
-    { day: 23, month: 'خرداد', year: 1403, iso: '2024-06-12', shamsi: '۱۴۰۳/۰۳/۲۳', dayName: 'چهارشنبه' },
-    { day: 24, month: 'خرداد', year: 1403, iso: '2024-06-13', shamsi: '۱۴۰۳/۰۳/۲۴', dayName: 'پنجشنبه' },
-    { day: 25, month: 'خرداد', year: 1403, iso: '2024-06-14', shamsi: '۱۴۰۳/۰۳/۲۵', dayName: 'جمعه' },
-    { day: 26, month: 'خرداد', year: 1403, iso: '2024-06-15', shamsi: '۱۴۰۳/۰۳/۲۶', dayName: 'شنبه' },
-    { day: 27, month: 'خرداد', year: 1403, iso: '2024-06-16', shamsi: '۱۴۰۳/۰۳/۲۷', dayName: 'یکشنبه' },
-    { day: 28, month: 'خرداد', year: 1403, iso: '2024-06-17', shamsi: '۱۴۰۳/۰۳/۲۸', dayName: 'دوشنبه' },
-    { day: 29, month: 'خرداد', year: 1403, iso: '2024-06-18', shamsi: '۱۴۰۳/۰۳/۲۹', dayName: 'سه‌شنبه' },
-    { day: 30, month: 'خرداد', year: 1403, iso: '2024-06-19', shamsi: '۱۴۰۳/۰۳/۳۰', dayName: 'چهارشنبه' },
-    { day: 31, month: 'خرداد', year: 1403, iso: '2024-06-20', shamsi: '۱۴۰۳/۰۳/۳۱', dayName: 'پنجشنبه' },
-    { day: 1, month: 'تیر', year: 1403, iso: '2024-06-21', shamsi: '۱۴۰۳/۰۴/۰۱', dayName: 'جمعه' },
-    { day: 2, month: 'تیر', year: 1403, iso: '2024-06-22', shamsi: '۱۴۰۳/۰۴/۰۲', dayName: 'شنبه' },
-    { day: 3, month: 'تیر', year: 1403, iso: '2024-06-23', shamsi: '۱۴۰۳/۰۴/۰۳', dayName: 'یکشنبه' },
-    { day: 4, month: 'تیر', year: 1403, iso: '2024-06-24', shamsi: '۱۴۰۳/۰۴/۰۴', dayName: 'دوشنبه' }
+    { day: 15, month: 'خرداد', year: 1403, iso: '2024-06-04', shamsi: '۱۴۰۳/۰۳/۱۵', dayName: 'پنج‌شنبه' },
+    { day: 16, month: 'خرداد', year: 1403, iso: '2024-06-05', shamsi: '۱۴۰۳/۰۳/۱۶', dayName: 'جمعه' },
+    { day: 17, month: 'خرداد', year: 1403, iso: '2024-06-06', shamsi: '۱۴۰۳/۰۳/۱۷', dayName: 'شنبه' },
+    { day: 18, month: 'خرداد', year: 1403, iso: '2024-06-07', shamsi: '۱۴۰۳/۰۳/۱۸', dayName: 'یک‌شنبه' },
+    { day: 19, month: 'خرداد', year: 1403, iso: '2024-06-08', shamsi: '۱۴۰۳/۰۳/۱۹', dayName: 'دوشنبه' },
+    { day: 20, month: 'خرداد', year: 1403, iso: '2024-06-09', shamsi: '۱۴۰۳/۰۳/۲۰', dayName: 'سه‌شنبه' },
+    { day: 21, month: 'خرداد', year: 1403, iso: '2024-06-10', shamsi: '۱۴۰۳/۰۳/۲۱', dayName: 'چهار‌شنبه' },
+    { day: 22, month: 'خرداد', year: 1403, iso: '2024-06-11', shamsi: '۱۴۰۳/۰۳/۲۲', dayName: 'پنجشنبه' },
+    { day: 23, month: 'خرداد', year: 1403, iso: '2024-06-12', shamsi: '۱۴۰۳/۰۳/۲۳', dayName: 'جمعه' },
+    { day: 24, month: 'خرداد', year: 1403, iso: '2024-06-13', shamsi: '۱۴۰۳/۰۳/۲۴', dayName: 'شنبه' },
+    { day: 25, month: 'خرداد', year: 1403, iso: '2024-06-14', shamsi: '۱۴۰۳/۰۳/۲۵', dayName: 'یک‌شنبه' },
+    { day: 26, month: 'خرداد', year: 1403, iso: '2024-06-15', shamsi: '۱۴۰۳/۰۳/۲۶', dayName: 'دوشنبه' },
+    { day: 27, month: 'خرداد', year: 1403, iso: '2024-06-16', shamsi: '۱۴۰۳/۰۳/۲۷', dayName: 'سه شنبه' },
+    { day: 28, month: 'خرداد', year: 1403, iso: '2024-06-17', shamsi: '۱۴۰۳/۰۳/۲۸', dayName: 'چهارشنبه' },
+    { day: 29, month: 'خرداد', year: 1403, iso: '2024-06-18', shamsi: '۱۴۰۳/۰۳/۲۹', dayName: 'پنجشنبه' },
+    { day: 30, month: 'خرداد', year: 1403, iso: '2024-06-19', shamsi: '۱۴۰۳/۰۳/۳۰', dayName: 'جمعه' },
+    { day: 31, month: 'خرداد', year: 1403, iso: '2024-06-20', shamsi: '۱۴۰۳/۰۳/۳۱', dayName: 'شنبه' },
+    { day: 1, month: 'تیر', year: 1403, iso: '2024-06-21', shamsi: '۱۴۰۳/۰۴/۰۱', dayName: 'یک‌شنبه' },
+    { day: 2, month: 'تیر', year: 1403, iso: '2024-06-22', shamsi: '۱۴۰۳/۰۴/۰۲', dayName: 'دوشنبه' },
+    { day: 3, month: 'تیر', year: 1403, iso: '2024-06-23', shamsi: '۱۴۰۳/۰۴/۰۳', dayName: 'سه‌شنبه' },
+    { day: 4, month: 'تیر', year: 1403, iso: '2024-06-24', shamsi: '۱۴۰۳/۰۴/۰۴', dayName: 'چهارشنبه' }
 ];
 
 function renderCalendarUI() {
