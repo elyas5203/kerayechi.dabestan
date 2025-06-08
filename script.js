@@ -138,6 +138,7 @@ const finalSelectedDate = document.getElementById('finalSelectedDate');
 const finalSelectedItemsList = document.getElementById('finalSelectedItemsList');
 const adminReservationsTableBody = document.getElementById('adminReservationsTable').querySelector('tbody');
 const refreshAdminDataBtn = document.getElementById('refreshAdminData');
+const btnSendTelegramSummary = document.getElementById('btnSendTelegramSummary'); // دکمه جدید
 
 // App State
 let currentView = 'allItems';
@@ -640,6 +641,46 @@ function convertToShamsi(isoDateString) {
     } catch (e) { return isoDateString + " (خطا در تبدیل)"; }
 }
 
+// ... (بعد از بقیه Event Listeners)
+
+btnSendTelegramSummary.addEventListener('click', async () => {
+    if (!GOOGLE_SHEET_WEB_APP_URL) {
+        alert("URL وب اپلیکیشن گوگل شیت تنظیم نشده است.");
+        return;
+    }
+
+    const originalButtonText = btnSendTelegramSummary.textContent;
+    btnSendTelegramSummary.disabled = true;
+    btnSendTelegramSummary.textContent = "در حال ارسال به تلگرام...";
+
+    try {
+        const url = new URL(GOOGLE_SHEET_WEB_APP_URL);
+        url.searchParams.append('action', 'sendAdminSummaryToTelegram'); // اکشن جدید برای سرور
+
+        const response = await fetch(url.toString(), {
+            method: 'GET',
+            mode: 'cors',
+            cache: 'no-cache'
+        });
+
+        if (response.ok) {
+            const result = await response.json();
+            if (result.status === 'success') {
+                alert(result.message || "خلاصه رزروها با موفقیت به تلگرام ارسال شد.");
+            } else {
+                alert(`خطا در ارسال خلاصه به تلگرام: ${result.message || 'خطای نامشخص از سرور.'}`);
+            }
+        } else {
+            alert(`خطا در ارتباط با سرور برای ارسال خلاصه: ${response.status} ${await response.text()}`);
+        }
+    } catch (error) {
+        console.error("Error sending admin summary to Telegram:", error);
+        alert(`خطای پیش‌بینی نشده در ارسال خلاصه به تلگرام: ${error.message}`);
+    } finally {
+        btnSendTelegramSummary.disabled = false;
+        btnSendTelegramSummary.textContent = originalButtonText;
+    }
+});
 // --- Initial Setup ---
 document.addEventListener('DOMContentLoaded', () => {
     setTimeout(() => {
@@ -652,4 +693,5 @@ document.addEventListener('DOMContentLoaded', () => {
             renderAllItems(); showView('allItemsView'); 
         }, 500);
     }, 1500);
+    
 });
