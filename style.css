@@ -334,6 +334,10 @@ body {
     background: var(--color-primary-dark); transform: translateY(-2px);
     box-shadow: 0 4px 12px rgba(52, 152, 219, 0.3); outline: none;
 }
+/* استایل مخصوص برای دکمه ارسال خلاصه به تلگرام */
+#adminView .admin-actions button#btnSendTelegramSummary {
+    background: var(--color-warning); /* رنگ متفاوت برای تمایز */
+}
 .table-container {
     overflow-x: auto; background: var(--glass-bg-lighter); padding: 20px;
     border-radius: var(--border-radius-large); border: 1px solid var(--glass-border);
