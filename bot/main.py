@@ -81,11 +81,11 @@ def button(update, context):
     context.user_data.clear()
 
 def main():
-    updater = Updater(config.settings.TELEGRAM_BOT_TOKEN, use_context=True)
+    updater = Updater(config.settings.TELEGRAM_BOT_TOKEN)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(filters.PHOTO, photo_handler, pass_user_data=True))
-    dp.add_handler(CallbackQueryHandler(button, pass_user_data=True))
+    dp.add_handler(MessageHandler(filters.PHOTO, photo_handler))
+    dp.add_handler(CallbackQueryHandler(button))
     updater.start_polling()
     updater.idle()
 
