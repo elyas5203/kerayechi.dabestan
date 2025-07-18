@@ -1,5 +1,5 @@
 import telegram
-from telegram.ext import Updater, CommandHandler, MessageHandler, Filters, CallbackQueryHandler
+from telegram.ext import Updater, CommandHandler, MessageHandler, filters, CallbackQueryHandler
 import config.settings
 
 def start(update, context):
@@ -84,7 +84,7 @@ def main():
     updater = Updater(config.settings.TELEGRAM_BOT_TOKEN, use_context=True)
     dp = updater.dispatcher
     dp.add_handler(CommandHandler("start", start))
-    dp.add_handler(MessageHandler(Filters.photo, photo_handler, pass_user_data=True))
+    dp.add_handler(MessageHandler(filters.PHOTO, photo_handler, pass_user_data=True))
     dp.add_handler(CallbackQueryHandler(button, pass_user_data=True))
     updater.start_polling()
     updater.idle()
