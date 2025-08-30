@@ -1,0 +1,4 @@
+TELEGRAM_BOT_TOKEN = "8015294938:AAEdyPutdHb4-lXRNYfKV2JLCzNoIKbXa6w"
+WORDPRESS_URL = "https://persiangulfrail.ir/"
+WORDPRESS_USERNAME = "admin"
+WORDPRESS_PASSWORD = "Oblh f4py mLEF vvG5 4dUn hYal"

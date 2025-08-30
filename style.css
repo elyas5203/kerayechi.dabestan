@@ -37,7 +37,7 @@
     --box-shadow-soft: 0 4px 15px rgba(0, 0, 0, 0.2);
     --box-shadow-medium: 0 8px 25px rgba(0, 0, 0, 0.25);
     --box-shadow-strong: 0 12px 35px rgba(0, 0, 0, 0.3);
-    
+
     --header-height: 70px;
 }
 
@@ -140,24 +140,24 @@ body {
 /* --- محتوای اصلی --- */
 #appMain {
     padding-top: calc(var(--header-height) + 25px);
-    padding-left: clamp(10px, 3vw, 20px); 
+    padding-left: clamp(10px, 3vw, 20px);
     padding-right: clamp(10px, 3vw, 20px);
     padding-bottom: 40px;
-    max-width: 100%; 
-    overflow-x: hidden; 
+    max-width: 100%;
+    overflow-x: hidden;
 }
 
 .view-section {
     margin-bottom: 35px;
     border-radius: var(--border-radius-large);
-    padding: clamp(15px, 4vw, 25px); 
+    padding: clamp(15px, 4vw, 25px);
     background: var(--glass-bg);
     backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturate));
     border: 1px solid var(--glass-border);
     box-shadow: var(--box-shadow-strong);
     max-width: 100%;
-    overflow-x: hidden; 
+    overflow-x: hidden;
 }
 .view-section h2, .view-section h3 {
     color: var(--color-text-headings);
@@ -173,14 +173,14 @@ body {
 /* --- گرید اقلام --- */
 .items-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr)); 
+    grid-template-columns: repeat(auto-fill, minmax(270px, 1fr));
     gap: clamp(15px, 3vw, 20px);
 }
 
 @media (max-width: 768px) { /* تبلت و موبایل بزرگ */
-    .items-grid { 
+    .items-grid {
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px; 
+        gap: 10px;
     }
     /* تک ستونه کردن گرید رزرو در این سایز موبایل */
     .items-grid.reservation-specific-grid {
@@ -191,7 +191,7 @@ body {
 @media (max-width: 480px) { /* موبایل خیلی کوچک */
     .items-grid { /* همه گریدها (از جمله گرید اصلی و گرید رزرو) تک ستونه می‌شوند */
         grid-template-columns: 1fr;
-        gap: 15px; 
+        gap: 15px;
     }
 }
 
@@ -223,7 +223,7 @@ body {
     margin: 0 auto 15px auto;
     border-radius: var(--border-radius-small);
     border: 1px solid rgba(255,255,255,0.05);
-    cursor: pointer; 
+    cursor: pointer;
 }
 .item-card h4 {
     margin: 0 0 8px 0;
@@ -381,25 +381,25 @@ body {
 
 /* --- استایل Modal برای بزرگنمایی عکس --- */
 .modal {
-    display: none; 
-    position: fixed; 
-    z-index: 2000; 
-    padding-top: 50px; 
+    display: none;
+    position: fixed;
+    z-index: 2000;
+    padding-top: 50px;
     left: 0;
     top: 0;
     width: 100%;
     height: 100%;
-    overflow: auto; 
-    background-color: rgba(0,0,0,0.85); 
-    -webkit-backdrop-filter: blur(5px); 
+    overflow: auto;
+    background-color: rgba(0,0,0,0.85);
+    -webkit-backdrop-filter: blur(5px);
     backdrop-filter: blur(5px);
 }
 .modal-content {
     margin: auto;
     display: block;
-    width: auto; 
-    max-width: 90%; 
-    max-height: 80vh; 
+    width: auto;
+    max-width: 90%;
+    max-height: 80vh;
     animation-name: zoomInModal;
     animation-duration: 0.4s;
 }
@@ -415,7 +415,7 @@ body {
     text-align: center;
     color: #ccc;
     padding: 10px 0;
-    height: 50px; 
+    height: 50px;
     font-size: 1.1rem;
 }
 .modal-close-button {
@@ -438,10 +438,10 @@ body {
 @media (max-width: 768px) { /* تبلت و موبایل بزرگتر */
     #appMain { padding-top: calc(var(--header-height) + 15px); }
     .view-section h2, .view-section h3 { font-size: 1.6rem; }
-    .items-grid { 
+    .items-grid {
         /* در حالت کلی دو ستونه برای تبلت */
         grid-template-columns: repeat(2, 1fr);
-        gap: 10px; 
+        gap: 10px;
     }
     /* برای گرید مخصوص رزرو، آن را تک ستونه می‌کنیم */
     .items-grid.reservation-specific-grid {
@@ -455,9 +455,9 @@ body {
     #appMain { padding-left: 8px; padding-right: 8px; }
     .view-section { padding: 15px; }
     /* همه گریدها (از جمله گرید اصلی و گرید رزرو) در این سایز تک ستونه می‌شوند */
-    .items-grid { 
+    .items-grid {
         grid-template-columns: 1fr;
-        gap: 12px; 
+        gap: 12px;
     }
     .item-card { padding: 12px; }
     .item-card img, .item-card .color-swatch { height: 120px; max-width: 120px; margin-bottom: 10px; }
